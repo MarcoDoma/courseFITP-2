@@ -113,6 +113,9 @@ html, body {
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  /* Spinge il contenuto sotto il notch/status bar quando è installata come PWA
+     (in browser/desktop l'inset vale 0, quindi nessun cambiamento visibile) */
+  padding-top: env(safe-area-inset-top);
 }
 
 .screen {
