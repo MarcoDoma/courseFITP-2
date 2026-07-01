@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Corso IS1 2026 · Studio</title>
+
+  <meta name="description" content="App di studio per il Corso di Formazione Istruttori di 1° Livello (Padel) FITP 2026: sezioni, flashcard, quiz, numeri chiave e piano in 7 giorni.">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0e14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Corso IS1 2026">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Three.js background canvas -->
+  <canvas id="three-bg"></canvas>
+
+  <!-- App shell -->
+  <div class="app">
+    <div class="screen" id="screen-home"></div>
+    <div class="screen" id="screen-sezioni" style="display:none"></div>
+    <div class="screen" id="screen-detail"  style="display:none"></div>
+    <div class="screen" id="screen-flash"   style="display:none"></div>
+    <div class="screen" id="screen-quiz"    style="display:none"></div>
+    <div class="screen" id="screen-numeri"  style="display:none"></div>
+
+    <nav class="nav">
+      <button class="nav-btn active" onclick="goTo('home',this)">
+        <span class="nav-indicator"></span>
+        <span class="nav-icon">🏠</span><span class="nav-label">Home</span>
+      </button>
+      <button class="nav-btn" onclick="goTo('sezioni',this)">
+        <span class="nav-indicator"></span>
+        <span class="nav-icon">📚</span><span class="nav-label">Sezioni</span>
+      </button>
+      <button class="nav-btn" onclick="goTo('flash',this)">
+        <span class="nav-indicator"></span>
+        <span class="nav-icon">🃏</span><span class="nav-label">Flashcard</span>
+      </button>
+      <button class="nav-btn" onclick="goTo('quiz',this)">
+        <span class="nav-indicator"></span>
+        <span class="nav-icon">🧠</span><span class="nav-label">Quiz</span>
+      </button>
+      <button class="nav-btn" onclick="goTo('numeri',this)">
+        <span class="nav-indicator"></span>
+        <span class="nav-icon">🔢</span><span class="nav-label">Numeri</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- App data & logic -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+  <!-- PWA service worker registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(() => {});
+      });
+    }
+  </script>
+
+</body>
+</html>
